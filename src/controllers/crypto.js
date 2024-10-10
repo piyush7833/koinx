@@ -4,6 +4,8 @@ const getStats = async (req, res) => {
   const { coin } = req.query;
 
   try {
+    if(!coin) return res.status(400).send({ message: "Coin name is required" });
+
     const cryptoData = await Crypto.findOne({
       name: coin.toLowerCase(),
     }).sort({ createdAt: -1 });
@@ -19,6 +21,7 @@ const getStats = async (req, res) => {
       message: "Coin stats fetched successfully",
     });
   } catch (error) {
+    console.log(error)
     res.status(500).send({ message: "Error fetching stats" });
   }
 };
@@ -27,6 +30,8 @@ const getDeviation = async (req, res) => {
   const { coin } = req.query;
 
   try {
+    if(!coin) return res.status(400).send({ message: "Coin name is required" });
+    
     const records = await Crypto.find({
       name: coin.toLowerCase(),
     })
@@ -50,6 +55,7 @@ const getDeviation = async (req, res) => {
         message: "Deviation calculated and fetched successfully",
       });
   } catch (error) {
+    console.log(error)
     res.status(500).send({ message: "Error calculating deviation" });
   }
 };

@@ -31,17 +31,7 @@ const fetchCryptoDataEvery2Hr = () => {
                     change: ethereum.usd_24h_change,
                 },
             ];
-
-            //if updation only is required then use this
-
-            // for (const data of cryptoData) {
-            //     const existingCrypto = await Crypto.findOne({ name: data.name });
-            //     if (existingCrypto) {
-            //         await Crypto.updateOne({ name: data.name }, data);
-            //     } else {
-            //         await Crypto.create(data);
-            //     }
-            // } 
+            
             await Crypto.insertMany(cryptoData);
             console.log('Crypto data fetched and stored successfully.');
         } catch (error) {
