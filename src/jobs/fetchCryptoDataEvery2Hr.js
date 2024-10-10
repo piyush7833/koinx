@@ -5,6 +5,7 @@ const Crypto = require('../models/Crypto');
 const fetchCryptoDataEvery2Hr = () => {
     cron.schedule('0 */2 * * *', async () => {
         try {
+            console.log("object")
             const response = await axios.get(
                 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,matic-network,ethereum&vs_currencies=usd&include_market_cap=true&include_24hr_change=true'
             );
@@ -48,5 +49,4 @@ const fetchCryptoDataEvery2Hr = () => {
         }
     });
 };
-
 module.exports = fetchCryptoDataEvery2Hr;

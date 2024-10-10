@@ -2,10 +2,10 @@
   "name": "koinx-assignment",
   "version": "1.0.0",
   "description": "Koinx Backend",
-  "main": "/src/app.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
